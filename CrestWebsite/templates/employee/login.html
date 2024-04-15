@@ -1,0 +1,39 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+    <div id="login" class="for-fixed-footer pb-5">
+        <div class="container profile col-md-4 px-5 pt-3 shadow-lg">
+            <h1 class="text-center text-dark py-2 alert alert-info">LOGIN</h1>
+            <div class="row align-items-start">
+                <form id="login-form" class="form text-dark" action="" method="post">
+                    {% csrf_token %}
+                    {% if form %}
+                    {% for field in form %}
+                    <div class="form-group  shadow-sm">
+                        <label class="text-info pt-2 h5">{{field.label_tag}}</label>
+                        {{field}}
+                        {% for error in field.errors %}
+                        <p style="color: red;"> {{error}} </p>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    <div class="form-group py-4">
+                        <input type="submit" name="submit" class="btn btn-primary btn-lg" value="Log In">
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+
+</body>
+
+{% endblock content %}

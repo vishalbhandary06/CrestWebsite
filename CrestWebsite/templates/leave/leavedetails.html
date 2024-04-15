@@ -1,0 +1,80 @@
+{% extends 'dashboard/dash_base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Leave Details</title>
+</head>
+
+
+<body>
+    
+    {% if user.is_authenticated %}
+    <div class="container-fluid profile col-md-6 px-5 pt-3 shadow-lg">
+        <h1 class="text-center text-dark py-2 alert alert-info">Leave Details</h1>
+        {% if  messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags}}"{% endif %}>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="row align-items-start">
+            <div class="card-body pt-0">
+                <table class="table table-bordered bg-light shadow-sm">
+                    <tr class="h5" style="height:50px; vertical-align: middle;">
+                      
+                        <th class="text-center" width="30%">Name</th>
+                        <td>{{ request.user }}</td>
+                      </tr>
+                  <tr class="h5" style="height:50px; vertical-align: middle;">
+                    <th class="text-center" width="30%">Start Date</th>
+                    <td>{{ leave.startdate }}</td>
+                  </tr>
+                  <tr class="h5" style="height:50px; vertical-align: middle;">
+                    <th class="text-center" width="30%">End Date</th>
+                    <td>{{ leave.enddate }}</td>
+                  </tr>
+                  <tr class="h5" style="height:50px; vertical-align: middle;">
+                    <th class="text-center" width="30%">Duration</th>
+                    <td>{{ leave.leave_days }}</td>
+                  </tr>
+                  <tr class="h5" style="height:50px; vertical-align: middle;">
+                    <th class="text-center" width="30%">Type</th>
+                    <td>{{ leave.leavetype }}</td>
+                  </tr>
+                  <tr class="h5" style="height:50px; vertical-align: middle;">
+                    <th class="text-center" width="30%">Reason</th>
+                    <td>{{ leave.reason }}</td>
+                  </tr>
+                  <tr class="h5" style="height:50px; vertical-align: middle;">
+                    <th class="text-center" width="30%">Status</th>
+                    <td>{{ leave.status }}</td>
+                  </tr>
+                </table>
+                <td> 
+                    
+                </td>
+                <td>
+                  <section class="row">
+                    <section class="col col-md-12 text-center">
+                      <div class="btn-group-lg float-start">
+                        {% if leave.leave_approved %}
+                        <a href="{% url 'leaveunapprove' leave.id %}" class="btn btn-primary" name='unapprove'>UNAPPROVE</a>
+                        {% else %}
+                        <a href="{% url 'leaveapprove' leave.id %}" class="btn btn-primary" name='approve'>APPROVE</a>
+                        {% endif %}
+                        <a href="{% url 'leavereject' leave.id %}" class="btn btn-warning" name='reject'>REJECT</a>  
+                        <a href="{% url 'leavedelete' leave.id %}" class="btn btn-danger text-light"> <h5>Delete</h5> </a>
+                      </div>
+                    </section>
+                  </section>
+                </td>
+                
+              </div>
+        </div>
+    </div>
+    {% endif %}
+</body>
+
+{% endblock content %}

@@ -1,0 +1,342 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Home</title>
+</head>
+
+<div id="home" class="for-fixed-footer">
+    <div class="pt-4" style="background-color: rgb(200, 200, 200);">
+        <div class="container">
+            <center class="pt-2">
+                <a style="text-decoration:none; color:black;" href="{% url 'industries' %}"><h3>Industries</h3></a>
+            </center>
+            <div id="carouselIndustries" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselIndustries" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselIndustries" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselIndustries" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/industries#aero">Aerospace</a></h4>
+                            </div>
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste
+                                    quidem, quibusdam cum suscipit porro officiis ipsa harum neque labore! Odio assumenda
+                                    omnis sequi nulla!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/industries#loco">Locomotive + Automotive</a></h4>
+                            </div>
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste
+                                    quidem, quibusdam cum suscipit porro officiis ipsa harum neque labore! Odio assumenda
+                                    omnis sequi nulla!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/industries#health">Health</a></h4>
+                            </div>
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste
+                                    quidem, quibusdam cum suscipit porro officiis ipsa harum neque labore! Odio assumenda
+                                    omnis sequi nulla!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <a class="carousel-control-prev" href="#carouselIndustries" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"
+                        style="position:relative; right:150px; background-color: rgb(189, 189, 189);"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#carouselIndustries" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"
+                        style="position:relative; left:150px; background-color: rgb(189, 189, 189);"
+                        aria-hidden="true"></span> -->
+                </a>
+            </div>
+        </div>
+    
+    </div>
+    
+    <div style="background-color: rgb(200, 200, 200);">
+        <div class="container">
+            <center class="mt-5 pt-2">
+                <a style="text-decoration:none; color:black;" href="{% url 'technologies' %}"><h3>Technologies</h3></a>
+            </center>
+            <div id="carouseltechnologies" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouseltechnologies" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouseltechnologies" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouseltechnologies" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouseltechnologies" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                  <button type="button" data-bs-target="#carouseltechnologies" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/technologies#embedded">Embedded</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/technologies#web">Web Applications</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/technologies#iot">IoT (Internet of Things)</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/technologies#ia">Industrial Automation</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/technologies#ia">Cyber Security</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/technologies#ia">Analytics</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <a class="carousel-control-prev" href="#carouseltechnologies" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"
+                        style="position:relative; right:150px; background-color: rgb(189, 189, 189);"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#carouseltechnologies" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"
+                        style="position:relative; left:150px; background-color: rgb(189, 189, 189);"
+                        aria-hidden="true"></span> -->
+                </a>
+            </div>
+        </div>
+    
+    </div>
+    
+    <div style="background-color: rgb(200, 200, 200);">
+        <div class="container">
+            <center class="mt-5 pt-2">
+                <a style="text-decoration:none; color:black;" href="{% url 'services' %}"><h3>Services</h3></a>
+            </center>
+            <div id="carouselServices" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselServices" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselServices" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselServices" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouselServices" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/services">Consulting</a></h4>
+                            </div>
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/services#Consulting">Product Engineering</a></h4>
+                            </div>
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/services#Product">Research and Development</a></h4>
+                            </div>
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-5 text-center">
+                                <h4 class="pt-5"><a style="text-decoration: none; color:black" href="/services#rnd">IT Transformation and Automation</a></h4>
+                            </div>
+                            <div class="col-7 text-center pt-3 pb-4">
+                                <p style="font-size: 20px;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae harum repudiandae omnis
+                                    quas
+                                    modi natus accusamus! Minus mollitia distinctio repudiandae quis nemo sapiente
+                                    accusantium
+                                    non, aliquid, vitae doloremque ad similique tempore illum eveniet vel iste quidem,
+                                    quibusdam
+                                    cum suscipit porro officiis ipsa harum neque labore! Odio assumenda omnis sequi nulla!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <a class="carousel-control-prev" href="#carouselServices" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"
+                        style="position:relative; right:150px; background-color: rgb(189, 189, 189);"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#carouselServices" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"
+                        style="position:relative; left:150px; background-color: rgb(189, 189, 189);"
+                        aria-hidden="true"></span> -->
+                </a>
+    
+            </div>
+        </div>
+    
+    </div>
+    
+    <div class="row px-3 pt-5 align-center">
+        <a style="padding: 0;" href="{% url 'careers' %}"><button
+                style="margin:0; width:100%; background-color: rgb(200, 200, 200);" type="submit" class="btn display-4">
+                <h3>Careers</h3>
+            </button></a>
+    </div>
+    
+    <div class="row px-3 pt-5 align-center">
+        <a style="padding: 0;" href="{% url 'aboutus' %}"><button
+                style="margin:0; width:100%; background-color: rgb(200, 200, 200);" type="submit" class="btn display-4">
+                <h3>About Us</h3>
+            </button></a>
+    </div><br>
+</div>
+
+
+{% endblock content %}

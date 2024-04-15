@@ -1,0 +1,160 @@
+{% extends 'dashboard/dash_base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% load static %}
+{% block content %}
+
+<head>
+  <title>Personal Information</title>
+</head>
+
+
+<body>
+
+  <table class="table">
+    <thead class="h4">
+      <tr class="text-center" style="height:50px; vertical-align: middle;">
+        <th width="25%"><a style="text-decoration: none; color: black;" href="{% url 'profile_personal' %}">Personal</a>
+        </th>
+        <th width="25%"> <a style="text-decoration: none; color: black;" href="{% url 'profile_work' %}">Work</a> </th>
+        <th width="25%"><a style="text-decoration: none; color: black;"
+            href="{% url 'profile_relationship' %}">Family</a></th>
+        <th width="25%" style="background-color: rgb(207, 206, 206);"><a style="text-decoration: none; color: black;"
+            href="{% url 'profile_education' %}">Education</a>
+        </th>
+      </tr>
+    </thead>
+  </table>
+
+  {% if user.is_authenticated %}
+  <div class="container-fluid profile col-md-8 px-5 pt-3 shadow-lg">
+    <h2 class="text-center text-dark py-2 alert alert-light">My Education</h2>
+    {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags}}" {% endif %}>
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="row">
+      <button type="button" class="col-2 btn-lg btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#education">
+        ADD
+      </button>
+      {% if education %}
+      {% for educ in education %}
+      {% if educ.employee == request.user %}
+      <div class="my-5 px-1 pt-3 bg-light row">
+        <h3 class="pb-2"> {{ educ.qualification }} : </h3>
+        <div class="col-md-6">
+          <table class="table table-bordered bg-light shadow-sm">
+            <tr class="h6" style="height:50px; vertical-align: middle;">
+              <th class="text-center" width="40%">Course Name</th>
+              <td>{{ educ.course_name }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-bordered bg-light shadow-sm">
+            <tr class="h6" style="height:50px; vertical-align: middle;">
+              <th class="text-center" width="40%">Course Type</th>
+              <td>{{ educ.course_type }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-bordered bg-light shadow-sm">
+            <tr class="h6" style="height:50px; vertical-align: middle;">
+              <th class="text-center" width="40%">Course Start Date</th>
+              <td>{{ educ.start }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-bordered bg-light shadow-sm">
+            <tr class="h6" style="height:50px; vertical-align: middle;">
+              <th class="text-center" width="40%">Course End Date</th>
+              <td>{{ educ.end }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-12">
+          <table class="table table-bordered bg-light shadow-sm">
+            <tr class="h6" style="height:50px; vertical-align: middle;">
+              <th class="text-center" width="40%">Course Stream</th>
+              <td>{{ educ.stream }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-12">
+          <table class="table table-bordered bg-light shadow-sm">
+            <tr class="h6" style="height:50px; vertical-align: middle;">
+              <th class="text-center" width="40%">College Name</th>
+              <td>{{ educ.college_name }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-12">
+          <table class="table table-bordered bg-light shadow-sm">
+            <tr class="h6" style="height:50px; vertical-align: middle;">
+              <th class="text-center" width="40%">University Name</th>
+              <td>{{ educ.university_name }}</td>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <a href=" {% url 'profile_education_update' educ.id %} "><button type="button" class="col-3 btn-lg btn-primary m-3">Update</button></a>
+          <a href=" {% url 'profile_education_delete' educ.id %} "><button type="button"
+              class="col-3 btn-lg btn-danger m-3 float-end">Delete</button></a>
+
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="education" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="staticBackdropLabel">Update Education Info</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="form text-dark" action="" method="POST">
+              {% csrf_token %}
+              {% if form %}
+              {{ form.qualification|as_crispy_field }} <br>
+              {{ form.course_name|as_crispy_field }} <br>
+              {{ form.course_type|as_crispy_field }} <br>
+              {{ form.stream|as_crispy_field }} <br>
+              {{ form.start|as_crispy_field }} <br>
+              {{ form.end|as_crispy_field }} <br>
+              {{ form.college_name|as_crispy_field }} <br>
+              {{ form.university_name|as_crispy_field }} <br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            {% endif %}
+            <input type="submit" name="submit" class="btn btn-primary" value="Create">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% endif %}
+  <script>
+    $(function () {
+      $("#id_start").datepicker();
+      $("#id_end").datepicker();
+    });
+  </script>
+</body>
+
+{% endblock content %}

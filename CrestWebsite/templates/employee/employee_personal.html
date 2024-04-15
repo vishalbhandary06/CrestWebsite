@@ -1,0 +1,163 @@
+{% extends 'dashboard/dash_base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% load static %}
+{% block content %}
+
+<head>
+  <title>Personal Information</title>
+</head>
+<body>
+  <table class="table">
+    <thead class="h4">
+      <tr class="text-center" style="height:50px; vertical-align: middle;">
+        <th width="25%" style="background-color: rgb(207, 206, 206);"><a style="text-decoration: none; color: black;"
+            href="{% url 'employee_personal' profile.id %}">Personal</a></th>
+        <th width="25%"> <a style="text-decoration: none; color: black;" href="{% url 'employee_work' profile.id %}">Work</a> </th>
+        <th width="25%"><a style="text-decoration: none; color: black;"
+            href="{% url 'employee_family' profile.id %}">Family</a></th>
+        <th width="25%"><a style="text-decoration: none; color: black;"
+            href="{% url 'employee_education' profile.id %}">Education</a></th>
+      </tr>
+    </thead>
+  </table>
+
+  {% if user.is_authenticated %}
+  <div class="container-fluid profile col-md-8 px-5 pt-3 shadow-lg">
+    <h2 class="text-center text-dark py-2 alert alert-light">Personal</h2>
+    {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags}}" {% endif %}>
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-bordered bg-light shadow-sm">
+          <tr class="h6" style="height:50px; vertical-align: middle;">
+            <th class="text-center" width="40%">Name</th>
+            <td>{{ profile.first_name }} {{profile.last_name}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-bordered bg-light shadow-sm">
+          <tr class="h6" style="height:50px; vertical-align: middle;">
+            <th class="text-center" width="40%">Date of Birth</th>
+            <td>{{ profile.birthday }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-bordered bg-light shadow-sm">
+          <tr class="h6" style="height:50px; vertical-align: middle;">
+            <th class="text-center" width="40%">Gender</th>
+            <td>{{ profile.gender }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-bordered bg-light shadow-sm">
+          <tr class="h6" style="height:50px; vertical-align: middle;">
+            <th class="text-center" width="40%">Blood Group</th>
+            <td>{{ profile.blood }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-bordered bg-light shadow-sm">
+          <tr class="h6" style="height:50px; vertical-align: middle;">
+            <th class="text-center" width="40%">Marital Status</th>
+            <td>{{ profile.marital }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-bordered bg-light shadow-sm">
+          <tr class="h6" style="height:50px; vertical-align: middle;">
+            <th class="text-center" width="40%">Phone Number</th>
+            <td>{{ profile.phone }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <table class="table table-bordered bg-light shadow-sm">
+      <tr class="h6" style="height:50px; vertical-align: middle;">
+        <th class="text-center" width="30%">Official Email ID</th>
+        <td>{{ profile.email }}</td>
+      </tr>
+    </table>
+    <table class="table table-bordered bg-light shadow-sm">
+      <tr class="h6" style="height:50px; vertical-align: middle;">
+        <th class="text-center" width="30%">Personal Email ID</th>
+        <td>{{ profile.per_email }}</td>
+      </tr>
+    </table>
+    <table class="table table-bordered bg-light shadow-sm">
+      <tr class="h6" style="height:50px; vertical-align: middle;">
+        <th class="text-center" width="30%">Current Address</th>
+        <td>{{ profile.c_address }}</td>
+      </tr>
+    </table>
+    <table class="table table-bordered bg-light shadow-sm">
+      <tr class="h6" style="height:50px; vertical-align: middle;">
+        <th class="text-center" width="30%">Permanent Address</th>
+        <td>{{ profile.p_address }}</td>
+      </tr>
+    </table>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn-lg btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#personal">
+      Update
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="personal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="staticBackdropLabel">Update Personal Info</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="form text-dark" action="" method="POST">
+              {% csrf_token %}
+              {% if form %}
+              {{ form.first_name|as_crispy_field }} <br>
+              {{ form.last_name|as_crispy_field }} <br>
+              {{ form.birthday|as_crispy_field }} <br>
+              {{ form.gender|as_crispy_field }} <br>
+              {{ form.blood|as_crispy_field }} <br>
+              {{ form.marital|as_crispy_field }} <br>
+              {{ form.phone|as_crispy_field }} <br>
+              {{ form.email|as_crispy_field }} <br>
+              {{ form.per_email|as_crispy_field }} <br>
+              {{ form.c_address|as_crispy_field }} <br>
+              {{ form.p_address|as_crispy_field }} <br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            {% endif %}
+            <input type="submit" name="submit" class="btn btn-primary" value="Update">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% endif %}
+  <script>
+    $(function () {
+      $("#id_birthday").datepicker();
+    });
+  </script>
+</body>
+
+{% endblock content %}

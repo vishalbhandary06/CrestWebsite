@@ -1,0 +1,173 @@
+{% extends 'dashboard/dash_base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Work Info</title>
+</head>
+
+
+<body>
+
+    <table class="table">
+        <thead class="h4">
+            <tr class="text-center" style="height:50px; vertical-align: middle;">
+                <th width="25%"><a style="text-decoration: none; color: black;"
+                        href="{% url 'profile_personal' %}">Personal</a></th>
+                <th width="25%" style="background-color: rgb(207, 206, 206);"> <a
+                        style="text-decoration: none; color: black;" href="{% url 'profile_work' %}">Work</a> </th>
+                <th width="25%"><a style="text-decoration: none; color: black;" href="{% url 'profile_relationship' %}">Family</a></th>
+                <th width="25%"><a style="text-decoration: none; color: black;"
+                    href="{% url 'profile_education' %}">Education</a></th>
+            </tr>
+        </thead>
+    </table>
+
+    {% if user.is_authenticated %}
+    <div class="container-fluid profile col-md-8 px-5 pt-3 shadow-lg">
+        <h2 class="text-center text-dark py-2 alert alert-light">Work Info</h2>
+        {% if  messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags}}"{% endif %}>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-bordered bg-light shadow-sm">
+                            <tr class="h6" style="height:50px; vertical-align: middle;">
+                                <th class="text-center" width="40%">Employee ID</th>
+                                <td>{{ profile.emp_id }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-bordered bg-light shadow-sm">
+                            <tr class="h6" style="height:50px; vertical-align: middle;">
+                                <th class="text-center" width="40%">Date of Joining</th>
+                                <td>{{ profile.date_joined.date }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-bordered bg-light shadow-sm">
+                            <tr class="h6" style="height:50px; vertical-align: middle;">
+                                <th class="text-center" width="40%">Employee Type</th>
+                                <td>{{ profile.emp_status }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-bordered bg-light shadow-sm">
+                            <tr class="h6" style="height:50px; vertical-align: middle;">
+                                <th class="text-center" width="40%">Department</th>
+                                <td>{{ profile.department }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-bordered bg-light shadow-sm">
+                            <tr class="h6" style="height:50px; vertical-align: middle;">
+                                <th class="text-center" width="40%">Role</th>
+                                <td>{{ profile.role }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-bordered bg-light shadow-sm">
+                            <tr class="h6" style="height:50px; vertical-align: middle;">
+                                <th class="text-center" width="40%">Designation</th>
+                                <td>{{ profile.title }} {{ profile.position }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-bordered bg-light shadow-sm">
+                            <tr class="h6" style="height:50px; vertical-align: middle;">
+                                <th class="text-center" width="40%">Employee Status</th>
+                                {% if profile.is_active %}
+                                <td>Active</td>
+                                {% else %}
+                                <td>Inactive</td>
+                                {% endif %}
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-bordered bg-light shadow-sm">
+                            <tr class="h6" style="height:50px; vertical-align: middle;">
+                                <th class="text-center" width="40%">Work Experience</th>
+                                <td>{{ profile.experience }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-bordered bg-light shadow-sm">
+                            <tr class="h6" style="height:50px; vertical-align: middle;">
+                                <th class="text-center" width="40%">Reporting Manager</th>
+                                <td>{{ profile.manager }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button type="button" class="btn-lg btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#personal">
+                    Update
+                  </button>
+              
+                  <!-- Modal -->
+                  <div class="modal fade" id="personal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h6 class="modal-title" id="staticBackdropLabel">Update Work Info</h6>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form class="form text-dark" action="" method="POST">
+                            {% csrf_token %}
+                            {% if form %}
+                            {{ form.emp_id|as_crispy_field }} <br>
+                            {{ form.emp_status|as_crispy_field }} <br>
+                            {{ form.department|as_crispy_field }} <br>
+                            {{ form.manager|as_crispy_field }} <br>
+                            {{ form.role|as_crispy_field }} <br>
+                            {{ form.title|as_crispy_field }} <br>
+                            {{ form.position|as_crispy_field }} <br>
+                            {{ form.experience|as_crispy_field }} <br>
+                            {{ form.is_active|as_crispy_field }} <br>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          {% endif %}
+                            <input type="submit" name="submit" class="btn btn-primary" value="Update">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+    </div>
+    {% endif %}
+    <script>
+        $(document).ready(function () {
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("menuDisplayed");
+            });
+        });
+    </script>
+</body>
+
+{% endblock content %}

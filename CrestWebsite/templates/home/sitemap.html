@@ -1,0 +1,86 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>SiteMap</title>
+</head>
+
+<div id="site" class="for-fixed-footer">
+    <a style="text-decoration: none; color:black" href=""></a>
+    <div class="container p-5">
+        <center><h1>Sitemap</h1></center>
+        <a style="text-decoration: none; color:black" href="/industries"><h3>Industries</h3></a>
+        <ul class="ms-4">
+            <li><a class="h4 ps-4" style="text-decoration: none; color:black" href="/industries#aero">Aerospace</a></li>
+            <ul class="pt-2 ms-4">
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/industries#ccms">Cabin Control and Monitoring Systems</a></li> 
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/industries#cls">Cabin Lighting Systems</a></li>
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/industries#wwcs">Water and Waster Control Systems</a></li>
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/industries#ap">Attendant Panels</a></li>
+            </ul>
+        </ul>
+        <ul class="pt-3 ms-4">
+            <li><a class="h4 ps-4" style="text-decoration: none; color:black" href="/industries#loco">Locomotive + Automotive</a></li>
+            <ul class="pt-2 ms-4">
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/industries#wwcs2">Water and Waste Control Systems</a></li> 
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/industries#mlc">Modular Logic Controllers</a></li>
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/industries#plc">Programmable Logic Controllers</a></li>
+            </ul>
+        </ul>
+        <ul class="pt-3 ms-4">
+            <li><a class="h4 ps-4" style="text-decoration: none; color:black" href="/industries#health">Health</a></li>
+            <ul class="pt-2 ms-4">
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/industries#ts">Test Systems</a></li>
+            </ul>
+        </ul>
+        <a class="pt-3" style="text-decoration: none; color:black" href="/technologies"><h3>Technologies</h3></a>
+        <ul class="ms-4">
+            <li><a class="h4 ps-4" style="text-decoration: none; color:black" href="/technologies#embedded">Embedded</a></li>
+            <ul class="pt-2 ms-4">
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/technologies#bmp">Bare Metal Programming</a></li> 
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/technologies#pmms">Programming Microcontrollers, Microprocessors and SoC</a></li>
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/technologies#osrlw">Operating Systems RTOS, Linux, Windows</a></li>
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/technologies#cp">Communication Protocols</a></li>
+            </ul>
+            <li><a class="h4 ps-4" style="text-decoration: none; color:black" href="/technologies#web">Web Applications</a></li>
+            <ul class="pt-2 ms-4">
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/technologies#fsbd">Full Stack based Development</a></li> 
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/technologies#mmba">Monolith and Microservices based Architectures</a></li>
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/technologies#sduid">Static and Dynamic User Interface Designs</a></li>
+            </ul>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/technologies#iot">IoT (Internet of Things)</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/technologies#ia">Industrial Automation</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/technologies#cs">Cyber Security</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/technologies#ana">Analytics</a></li>
+        </ul>
+        <a class="pt-3" style="text-decoration: none; color:black" href="/services"><h3>Services</h3></a>
+        <ul class="ms-4">
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/services">Consulting</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/services#Consulting">Product Engineering</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/services#Product">Research and Development</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/services#rnd">IT Transformation and Automation</a></li>
+        </ul>
+        <a class="pt-3" style="text-decoration: none; color:black" href="/careers"><h3>Careers</h3></a>
+        <ul class="ms-4">
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/careers">Why CREST (Culture and Benefits)</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/careers#job">Job Opportunities</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/careers#intern">Internship Opportunities</a></li>
+        </ul>
+        <a class="pt-3" style="text-decoration: none; color:black" href="/aboutus"><h3>About Us</h3></a>
+        <ul class="ms-4">
+            <li><a class="h4 ps-4" style="text-decoration: none; color:black" href="/aboutus">Company Overview</a></li>
+            <ul class="pt-2 ms-4">
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/aboutus">Who We Are (Company and Team)</a></li> 
+                <li><a class="h5 ps-4" style="text-decoration: none; color:black" href="/aboutus">How We Work (Work Ethics)</a></li>
+            </ul>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/aboutus#client">Client Testimonials</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/aboutus#team">Team (Key Stakeholders)</a></li>
+            <li class="pt-2"><a class="h4 ps-4" style="text-decoration: none; color:black" href="/aboutus#location">Locations</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+{% endblock content %}

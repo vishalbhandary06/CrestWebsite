@@ -1,0 +1,52 @@
+{% extends 'dashboard/dash_base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Apply for Leave</title>
+</head>
+
+<body>
+    <div class="container profile col-md-6 px-5 pt-3 shadow-lg">
+        <h1 class="text-center text-dark py-2 alert alert-info">Apply for Leave</h1>
+        {% if  messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags}}"{% endif %}>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="row align-items-start">
+            <form id="login-form" class="form text-dark" action="" method="post">
+                {% csrf_token %}
+                {% if form %}
+                {% for field in form %}
+                <div class="form-group  shadow-sm">
+                    <label class="text-info pt-2 h5">{{field.label_tag}}</label>
+                    {{field}}
+                    {% for error in field.errors %}
+                    <p style="color: red;"> {{error}} </p>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                {% for message in messages %}
+                    <p class="text-danger pt-1">{{ message }}!!</p> 
+                {% endfor %}
+                <div class="form-group py-4">
+                    <input type="submit" name="submit" class="btn btn-primary btn-lg" value="Submit">
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+      $("#id_startdate").datepicker();
+      $("#id_enddate").datepicker();
+    });
+    </script>
+</body>
+
+
+{% endblock content %}

@@ -1,0 +1,19 @@
+1.	Need to add new slider?
+	copy and paste the div that has class="carousel slide" and change the id in div and add the same id in all button's data-bs-target
+		
+2.	Need to add new slider item inside slider?
+	- copy and paste the div that has class="carousel-item"
+	- inside div that has class="carousel-indicators", copy and paste the button and increment the numbers in "data-bs-slide-to" and "aria-label" values
+
+3.	For padding
+	- ps0-ps5 for padding at the start 
+	- pe0-pe5 for padding at the end 
+	- pt0-pt5 for padding at the top 
+	- pb0-pb5 for padding at the bottom 
+	
+4.	For changing the margin
+	just replace p by m from the above padding section
+	
+5.	To make letters bold - h1-h6
+
+6.	To change the font size - fs-1 to fs-6

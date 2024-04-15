@@ -1,0 +1,189 @@
+{% extends 'dashboard/dash_base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Family Information</title>
+</head>
+
+
+<body>
+
+    <table class="table">
+        <thead class="h4">
+            <tr class="text-center" style="height:50px; vertical-align: middle;">
+                <th width="25%"><a style="text-decoration: none; color: black;"
+                        href="{% url 'profile_personal'  %}">Personal</a></th>
+                <th width="25%"> <a style="text-decoration: none; color: black;"
+                        href="{% url 'profile_work' %}">Work</a> </th>
+                <th width="25%" style="background-color: rgb(207, 206, 206);"><a
+                        style="text-decoration: none; color: black;" href="{% url 'profile_relationship' %}">Family</a>
+                </th>
+                <th width="25%"><a style="text-decoration: none; color: black;"
+                    href="{% url 'profile_education' %}">Education</a></th>
+            </tr>
+        </thead>
+    </table>
+
+    {% if user.is_authenticated %}
+    <div class="container-fluid profile col-md-8 px-5 pt-3 shadow-lg">
+        <h2 class="text-center text-dark py-2 alert alert-light">Relationship Information</h2>
+        <div class="row">
+            <table class="table table-bordered shadow-sm table-sortable" id="myTable">
+                <thead class="h5 bg-light">
+                    <tr class="text-center" style="height:70px; vertical-align: middle;">
+                        <th scope="col">Name</th>
+                        <th scope="col">Relationship</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col"><button type="button" class="btn-lg btn-primary mb-2" data-bs-toggle="modal"
+                                data-bs-target="#new_rel">
+                                New
+                            </button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for field in relation %}
+                    {% if field.employee == request.user %}
+                    <tr class="h6 text-center" style="height:70px; vertical-align: middle;">
+                        <td> {{ field.fullname }} </td>
+                        <td> {{ field.relationship }} </td>
+                        <td> {{ field.phone }} </td>
+                        <td>
+                            <a href="{% url 'profile_relationship_update' field.id %}" name="update_rel"
+                                class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path
+                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                    <path fill-rule="evenodd"
+                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                </svg></a>
+                            <a href="{% url 'profile_relationship_delete' field.id %}" class="btn btn-danger"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2h6a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg></a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container-fluid profile col-md-8 px-5 pt-3 shadow-lg">
+        <h1 class="text-center text-dark py-2 alert alert-light">Emergency Contact Information</h1>
+        <div class="row">
+            <table class="table table-bordered shadow-sm table-sortable" id="myTable">
+                <thead class="h5 bg-light">
+                    <tr class="text-center" style="height:70px; vertical-align: middle;">
+                        <th scope="col">Name</th>
+                        <th scope="col">Relationship</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col"><button type="button" class="btn-lg btn-primary mb-2" data-bs-toggle="modal"
+                                data-bs-target="#new_emer">
+                                New
+                            </button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for field in emergency %}
+                    {% if field.employee == request.user %}
+                    <tr class="h6 text-center" style="height:70px; vertical-align: middle;">
+                        <td> {{ field.fullname }} </td>
+                        <td> {{ field.relationship }} </td>
+                        <td> {{ field.phone }} </td>
+                        <td>
+                            <a href="{% url 'profile_emergency_update' field.id %}" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path
+                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                    <path fill-rule="evenodd"
+                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                </svg></a>
+                            <a href="{% url 'profile_emergency_delete' field.id %}" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2h6a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg></a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal for New Relationship form -->
+        <div class="modal fade" id="new_rel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="staticBackdropLabel">Add Relationship Information</h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form text-dark" action="" method="POST">
+                            {% csrf_token %}
+                            {% if new_rel_form %}
+                            {{ new_rel_form.fullname|as_crispy_field }} <br>
+                            {{ new_rel_form.phone|as_crispy_field }} <br>
+                            {{ new_rel_form.relationship|as_crispy_field }} <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" name="new_rel" class="btn btn-primary" value="Create">
+                        {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal for New Emergency form -->
+        <div class="modal fade" id="new_emer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="staticBackdropLabel">Add Emergency Information</h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form text-dark" action="" method="POST">
+                            {% csrf_token %}
+                            {% if new_emer_form %}
+                            {{ new_emer_form.fullname|as_crispy_field }} <br>
+                            {{ new_emer_form.phone|as_crispy_field }} <br>
+                            {{ new_emer_form.relationship|as_crispy_field }} <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" name="new_emer" class="btn btn-primary" value="Create">
+                        {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endif %}
+    <script>
+        $(document).ready(function () {
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("menuDisplayed");
+            });
+        });
+    </script>
+</body>
+
+{% endblock content %}

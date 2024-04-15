@@ -1,0 +1,40 @@
+{% extends 'dashboard/dash_base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Update Relationship Information</title>
+</head>
+
+<body>
+    <div class="container profile col-md-6 px-5 pt-3 shadow-lg">
+        <h1 class="text-center text-dark py-2 alert alert-info">Update Relationship Information</h1>
+        {% if text %}
+        <h5 class="text-center h3 py-5 text-success">{{ text }}</h5>
+        {% endif %}
+        <div class="row align-items-start">
+            <form id="login-form" class="form text-dark" action="" method="POST">
+                {% csrf_token %}
+                {% if form %}
+                {{ form.fullname|as_crispy_field }} <br>
+                {{ form.phone|as_crispy_field }} <br>
+                {{ form.relationship|as_crispy_field }} <br>
+                <div class="form-group py-4">
+                    <input type="submit" name="submit" class="btn btn-primary btn-lg" value="Update">
+                    <a href="{% url 'employee_family' id %}" class="btn btn-danger btn-lg float-end">Cancel</a>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+      $("#id_birthday").datepicker();
+    });
+    </script>
+</body>
+
+
+{% endblock content %}

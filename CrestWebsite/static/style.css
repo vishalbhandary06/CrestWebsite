@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+@media(max-width: 768px){
+    #home, #ind, #tech, #service, #careers, #aboutus, #contactus, #site, #login{
+        margin-bottom: 350px;
+    }
+}
+
+.for-fixed-footer{
+    background-color: white; 
+    z-index: 100; 
+    margin-bottom: 150px;
+}
+
+.card img{
+    width: auto;
+}
+
+.card{
+    padding: 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    background-color: rgba(204, 204, 204, 0.37);
+    height: 46%;
+    width: 22rem;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.ctr{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding-top: 30%;
+}
+
+.img-hover:hover .overlay{
+    opacity: 1;
+}
+
+nav li:hover, nav p:hover{
+    opacity: 0.7;
+}
+
+nav{
+    transition: 1s ease-in-out;
+}
+
+/* .navbar .sticky {
+    height: 65px;
+    transition: 1s ease-in-out;
+    background-color: #212529;
+} */
+
+#logo{
+    transition: 0.2s;
+}
+
+#logo.shrink{
+    width: 40px;
+    height: 40px;
+    transition: 0.3s;
+}
+ 
+#right-nav.hide{
+    display: none;
+}
+
+.navbar > *{
+    
+    left: 5%;
+    background-color: #212529;
+}
+
+navbar-toggler > * {
+    padding: 0;
+    margin: 0;
+}
+
+.profile{
+    margin-top: 50px;
+    margin-bottom: 100px;
+    border: 1px solid #9c9c9c;
+    background-color: #eaeaea;
+}

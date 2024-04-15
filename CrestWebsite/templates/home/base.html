@@ -1,0 +1,138 @@
+<!DOCTYPE html> {% load static %} {% static 'images/' as baseURL %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/crest.png' %}" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav style="background-color: #212529;" class="navbar navbar-expand-lg navbar-dark sticky-top py-0" aria-label="Eighth navbar example">
+        <a style="margin-bottom: 0px;" class="navbar-brand h1 d-inline-flex ps-5" href="{% url 'home' %}">
+            <img id="logo" src="{% static 'images/mark6.png' %}" alt="" width="100" height="100">
+            <p style="margin: 0px;" class="ps-2 align-self-center">CREST</p>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
+            aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExample07">
+            <ul id="right-nav" class="navbar-nav pe-5">
+                <li class="nav-item px-2">
+                    <a style="margin-bottom: 0px;" class="nav-link text-white h5" aria-current="page" href="{% url 'home' %}"><center>Home</center></a>
+                </li>
+                <li class="nav-item px-2">
+                    <a style="margin-bottom: 0px;" class="nav-link text-white h5" aria-current="page" href="{% url 'industries' %}"><center>Industries</center></a>
+                </li>
+                <li class="nav-item px-2">
+                    <a style="margin-bottom: 0px;" class="nav-link text-white h5" aria-current="page" href="{% url 'technologies' %}"><center>Technologies</center></a>
+                </li>
+                <li class="nav-item px-2">
+                    <a style="margin-bottom: 0px;" class="nav-link text-white h5" aria-current="page" href="{% url 'services' %}"><center>Services</center></a>
+                </li>
+                <li class="nav-item px-2">
+                    <a style="margin-bottom: 0px;" class="nav-link text-white h5" href="{% url 'careers' %}"><center>Careers</center></a>
+                </li>
+                <li class="nav-item px-2">
+                    <a style="margin-bottom: 0px;" class="nav-link text-white h5" href="{% url 'aboutus' %}"><center>About Us</center></a>
+                </li>
+                <!-- <li class="nav-item px-2">
+                    <a class="nav-link text-white h5" href="{% url 'contact' %}">Contact Us</a>
+                </li> -->
+                <!-- <li class="nav-item px-2">
+                    <a style="margin-bottom: 0px;" class="nav-link text-white h5" href="{% url 'login_user' %}"><center>EMP Login</center></a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+    
+    {% block content %} {% endblock content %}
+
+    <div id="foot" class="bg-dark" style="position: fixed; bottom: 0; width: 100%; z-index: -1000">
+        <div class="container pb-3">
+            <footer class="row pt-2 pb-2 d-flex justify-content-center">
+
+                <div class="col col-12 col-md-2">
+                    <center><img class="mt-3" src="{% static 'images/crest.png' %}" alt="" width="80" height="80"></center>
+                </div>
+
+                <div class="col text-white col-12 col-md-3">
+                    <center>
+                        <h5>OUR LOCATIONS</h5>
+                        <p>INDIA, Bengaluru<br> UNITED KINGDOM, Reading<br>GERMANY, Hamburg</p>
+                    </center>
+                </div>
+
+                <div class="col text-white col-12 col-md-2">
+                    <center>
+                        <h5>CONTACT US</h5>
+                        <p>+91 9972 900487<br>+44 7535 184130<br>+44 7540 703729<br></p>
+                    </center>
+                </div>
+
+                <div class="col text-white col-12 col-md-3">
+                    <center>
+                        <h5>WRITE TO US </h5>
+                        <a style="text-decoration: none; color:white" href="mailto:info@crestaerospace.co.uk">info@crestaerospace.co.uk</a> 
+                    </center>
+                </div>
+
+                <div class="col text-white col-12 col-md-2">
+                    <center>
+                        <a style="text-decoration: none; color:white" href="{% url 'sitemap' %}"><h5>Sitemap</h5></a>
+                    </center> 
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="bg-dark border-top" style="position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        <div class="container">
+            <footer class="row text-white">
+                <div class="col-10">
+                    <p style="margin-bottom: 0px;" id="copy">&copy; Copyright 2022 CREST - All Rights Reserved</p>
+                </div>
+                <div class="col-2 text-end">
+                    <a href="https://in.linkedin.com/company/crestaerospace-technologies-private-limited"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-linkedin text-white" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                        </svg></a>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            let header = document.querySelector('nav');
+            header.classList.toggle('sticky', window.scrollY > 0);
+            let logo = document.getElementById('logo');
+            logo.classList.toggle('shrink', window.scrollY > 0);
+    //        let right = document.getElementById('right-nav');
+    //        right.classList.toggle('hide', window.scrollY > 0);
+        });
+    </script>
+</body>
+
+</html>

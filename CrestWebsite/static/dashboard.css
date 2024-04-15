@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  min-height: 90vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 38%), rgba(0, 0, 0, 38%)),
+    url("images/aero2.jpg");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.text-box {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  transition: 1s;
+}
+
+.text-box h1 {
+  font-size: 3.4rem;
+  font-weight: 750;
+}
+
+.text-box p {
+  padding: 5%;
+  font-size: 17px;
+}
+
+.text-box a button {
+  background-color: rgb(219, 18, 52);
+  border-radius: 20px;
+  padding: 10px;
+  width: 25%;
+  border: 1px solid rgb(219, 18, 52);
+  transition: 1s;
+  color: white;
+  cursor: pointer;
+}
+
+.text-box button:hover {
+  background-color: red;
+}
+
+@media (max-width: 700px) {
+  .text-box h1 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .text-box p {
+    font-size: 10px;
+  }
+  .text-box a button {
+    width: 100%;
+  }
+}
+
+.text-box a {
+  color: white;
+}
+
+.card img {
+  width: 22rem;
+}
+
+.card {
+  padding: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  background-color: rgba(204, 204, 204, 0.37);
+  height: 46%;
+  width: 22rem;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.ctr {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding-top: 30%;
+}
+
+.img-hover:hover .overlay {
+  opacity: 1;
+}
+
+nav li:hover,
+nav p:hover {
+  /* opacity: 0.7; */
+}
+
+nav {
+  transition: 1s ease-in-out;
+}
+
+/* .navbar .sticky {
+  height: 65px;
+  transition: 1s ease-in-out;
+  background-color: #212529;
+} */
+
+#logo {
+  transition: 0.2s;
+}
+
+#logo.shrink {
+  width: 45px;
+  height: 45px;
+  transition: 0.3s;
+}
+
+.navbar > * {
+  left: 5%;
+  background-color: #212529;
+}
+
+navbar-toggler > * {
+  padding: 0;
+  margin: 0;
+}
+
+.login {
+  background-color: white;
+  width: 20%;
+  top: 50%;
+}
+
+.sec-login {
+  height: 90vh;
+  background-color: cadetblue;
+}
+
+#login .container #login-row #login-column #login-box {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  /* width: 50%; */
+  /* height: 60vh; */
+  border: 1px solid #9c9c9c;
+  background-color: #eaeaea;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login
+  .container
+  #login-row
+  #login-column
+  #login-box
+  #login-form
+  #register-link {
+  margin-top: -85px;
+}
+
+.profile{
+  margin-top: 50px;
+  margin-bottom: 100px;
+  border: 1px solid #9c9c9c;
+  background-color: #eaeaea;
+}
+
+
+/* for sorting */
+.table-sortable th {
+  cursor: pointer;
+}
+
+.table-sortable .th-sort-asc::after {
+  content: "\25b4";
+  color: #212529;
+}
+
+.table-sortable .th-sort-desc::after {
+  content: "\25be";
+  color: #212529;
+}
+
+.table-sortable .th-sort-asc::after,
+.table-sortable .th-sort-desc::after {
+  margin-left: 5px;
+}
+
+th:hover,
+th:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.leave{
+  margin-top: 100px;
+}
+
+.leaves{
+  padding: 100px;
+}
+
+.leave-height{
+  height: 25vh;
+}
+
+.leave-height a{
+  position: relative;
+  top: 80px;
+  text-decoration: none;
+}

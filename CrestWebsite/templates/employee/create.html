@@ -1,0 +1,270 @@
+{% extends 'dashboard/dash_base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Create</title>
+</head>
+
+<body>
+
+    {% if user.is_authenticated %}
+    <div class="row">
+        <div class="col">
+            <div class="container-fluid profile pt-2 shadow-lg">
+                <h1 class="text-center text-dark py-2 alert alert-light">Department</h1>
+                <div class="row">
+                    <table class="table table-bordered shadow-sm table-sortable" id="myTable">
+                        <thead class="h4 bg-light">
+                            <tr class="text-center" style="height:70px; vertical-align: middle;">
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col"><button type="button" class="btn-lg btn-primary mb-2"
+                                        data-bs-toggle="modal" data-bs-target="#add-department">
+                                        New
+                                    </button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for depart in department %}
+                            <tr class="h5 text-center" style="height:70px; vertical-align: middle;">
+                                <td> {{ forloop.counter }} </td>
+                                <td> {{ depart.name }} </td>
+                                <td>
+                                    <a href=" {% url 'department_delete' depart.id %} " class="btn btn-danger"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="container-fluid profile pt-2 shadow-lg">
+                <h1 class="text-center text-dark py-2 alert alert-light">Title</h1>
+                <div class="row">
+                    <table class="table table-bordered shadow-sm table-sortable" id="myTable">
+                        <thead class="h4 bg-light">
+                            <tr class="text-center" style="height:70px; vertical-align: middle;">
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col"><button type="button" class="btn-lg btn-primary mb-2"
+                                        data-bs-toggle="modal" data-bs-target="#add-title">
+                                        New
+                                    </button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for title in titles %}
+                            <tr class="h5 text-center" style="height:70px; vertical-align: middle;">
+                                <td> {{ forloop.counter }} </td>
+                                <td> {{ title.name }} </td>
+                                <td>
+                                    <a href=" {% url 'title_delete' title.id %} " class="btn btn-danger"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="container-fluid profile pt-2 shadow-lg">
+                <h1 class="text-center text-dark py-2 alert alert-light">Position</h1>
+                <div class="row">
+                    <table class="table table-bordered shadow-sm table-sortable" id="myTable">
+                        <thead class="h4 bg-light">
+                            <tr class="text-center" style="height:70px; vertical-align: middle;">
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col"><button type="button" class="btn-lg btn-primary mb-2"
+                                        data-bs-toggle="modal" data-bs-target="#add-position">
+                                        New
+                                    </button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for position in positions %}
+                            <tr class="h5 text-center" style="height:70px; vertical-align: middle;">
+                                <td> {{ forloop.counter }} </td>
+                                <td> {{ position.name }} </td>
+                                <td>
+                                    <a href=" {% url 'position_delete' position.id %} " class="btn btn-danger"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="container-fluid profile pt-2 shadow-lg">
+                <h1 class="text-center text-dark py-2 alert alert-light">Role</h1>
+                <div class="row">
+                    <table class="table table-bordered shadow-sm table-sortable" id="myTable">
+                        <thead class="h4 bg-light">
+                            <tr class="text-center" style="height:70px; vertical-align: middle;">
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Priority</th>
+                                <th scope="col"><button type="button" class="btn-lg btn-primary mb-2"
+                                        data-bs-toggle="modal" data-bs-target="#add-role">
+                                        New
+                                    </button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for role in roles %}
+                            <tr class="h5 text-center" style="height:70px; vertical-align: middle;">
+                                <td> {{ forloop.counter }} </td>
+                                <td> {{ role.name }} </td>
+                                <td> {{ role.priority }} </td>
+                                <td>
+                                    <a href=" {% url 'role_delete' role.id %} " class="btn btn-danger"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Modal for new department -->
+    <div class="modal fade" id="add-department" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add New Department</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form text-dark" action="" method="POST">
+                        {% csrf_token %}
+                        {% if depart_form %}
+                        {{ depart_form|crispy }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    {% endif %}
+                    <input type="submit" name="add_department" class="btn btn-primary" value="Create">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for new department -->
+    <div class="modal fade" id="add-title" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add New Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form text-dark" action="" method="POST">
+                        {% csrf_token %}
+                        {% if title_form %}
+                        {{ title_form|crispy }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    {% endif %}
+                    <input type="submit" name="add_title" class="btn btn-primary" value="Create">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for new position -->
+    <div class="modal fade" id="add-position" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add New Position</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form text-dark" action="" method="POST">
+                        {% csrf_token %}
+                        {% if position_form %}
+                        {{ position_form|crispy }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    {% endif %}
+                    <input type="submit" name="add_position" class="btn btn-primary" value="Create">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for new role -->
+    <div class="modal fade" id="add-role" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add New Role</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form text-dark" action="" method="POST">
+                        {% csrf_token %}
+                        {% if role_form %}
+                        {{ role_form|crispy }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    {% endif %}
+                    <input type="submit" name="add_role" class="btn btn-primary" value="Create">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+{% endblock content %}
