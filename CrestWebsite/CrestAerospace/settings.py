@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRE_KEY', 'hr+jqld*lpwlew+v#&v^oa-ghc%e=sb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['RazorBill06.pythonanywhere.com', '35.173.69.207']
 
 
 # Application definition
